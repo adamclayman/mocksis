@@ -6,3 +6,10 @@
 [class *= "col-"]{
 	padding: 1rem;
 }
+
+/*Table Center*/
+.table {
+   margin: auto;
+   width: 50% !important; 
+}
+

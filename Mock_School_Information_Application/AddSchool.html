@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<!--Responive to viewport for varying device width-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Jackson School District Information Application</title>
+		<!-- Bootstrap default CSS-->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- Jackckson School District Application specific CSS Stylesheet-->
+		<link href="style.css" rel="stylesheet">
+	</head>
+	<body>
+		<!--Top Navigation Responsive Full-Width/Sticky to Top-->
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+			<div class="container-fluid">
+				<!--Top Left Nav School Logo-->
+				<a class="navbar-brand" href="index.html"><img src="img/JacksonLogo.png"></a>
+				<!--Collapsable Navbar Menu Button/Toggler when screenwidth is small-->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<!--Set Navbar Buttons to Far Right when Website spans full-width of screen-->
+					<!--List of Links to Webpages-->
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="">Home</a>
+						</li>
+						<!--Non-Active/Bolded Links to Webpages below, adjust as needed depending on what page is being viewed-->
+						<!--Classes Dropdown Option-->
+          	<li class="nav-item dropdown">
+            		<a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
+            		<div class="dropdown-menu" aria-labelledby="dropdown01">
+              			<a class="dropdown-item" href="#">View Classes</a>
+              			<a class="dropdown-item" href="#">Add Class</a>
+            		</div>
+          	</li>
+          				<!--Students Dropdown Option-->
+          	<li class="nav-item dropdown">
+            		<a class="nav-link dropdown-toggle" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
+            		<div class="dropdown-menu" aria-labelledby="dropdown02">
+              			<a class="dropdown-item" href="#">View Students</a>
+              			<a class="dropdown-item" href="#">Add Students</a>
+            		</div>
+          	</li>
+          				<!--Staff Dropdown Option-->
+          	<li class="nav-item dropdown">
+            		<a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Staff</a>
+            		<div class="dropdown-menu" aria-labelledby="dropdown03">
+              			<a class="dropdown-item" href="#">View Staff</a>
+              			<a class="dropdown-item" href="#">Add Staff</a>
+            		</div>
+          	</li>
+          				<!--Schools Dropdown Option-->
+                  <!--Bolded/Currently active link below. Add/Remove "active" class based on which page is currently being viewed by the user-->
+          	<li class="nav-item dropdown">
+            		<a class="nav-link dropdown-toggle active" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Schools</a>
+            		<div class="dropdown-menu" aria-labelledby="dropdown04">
+              			<a class="dropdown-item" href="#">View Schools</a>
+              			<a class="dropdown-item active" href="#">Add Schools</a>
+            		</div>
+          	</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!--Top Informational Jumbotron-->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3 text-center">Add a School</h1>
+      </div>
+    </div>
+
+    <!--Add School Forms Below-->
+    <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+
+        <form role="form">
+          <label for="SchoolName">School Name</label>
+          <div class="form-group form-inline">
+            <input type="SchoolName" class="form-control" id="SchoolNameInput" placeholder="Enter School Name">
+          </div>
+
+          <label for="StreetAddress">Street Address</label>
+          <div class="form-group form-inline">
+            <input type="StreetAddress" class="form-control" id="StreetAddressInput" placeholder="Enter Street Address">
+          </div>
+
+          <label for="City">City</label>
+          <div class="form-group form-inline">
+            <input type="City" class="form-control" id="CityInput" placeholder="Enter City">
+          </div>
+
+          <label for="Zipcode">Zipcode</label>
+          <div class="form-group form-inline">
+            <input type="Zipcode" class="form-control" id="ZipcodeInput" placeholder="Enter Zipcode">
+          </div>
+          
+          <button type="submit" class="btn btn-secondary">Add School</button>
+        </form>
+        
+      </div>
+    </div>
+  
+
+
+    <!--Footer-->
+    <footer>
+      <div class = "container-fluid padding mt-4">
+      	<div class="row text-center">
+      		<div class = "col-md-12">
+      			<h5>Contact Us</h5>
+      			<hr class="dark">
+      			<p>(123) 456-789</p>
+      			<p>JacksonSchoolDistrict@jackson.edu</p>
+      			<p>123 Street Ave.</p>
+      			<p>City, State 00000</p>
+      		</div>
+      	</div>
+      </div>
+    </footer>
+
+		<!-- Bootstrap required JavaScript plugins-->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">	</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+</html>
