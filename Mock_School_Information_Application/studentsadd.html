@@ -75,56 +75,37 @@
 		<!--Top Informational Jumbotron-->
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-3 text-center">View Schools</h1>
+        <h1 class="display-3 text-center">Add a Student</h1>
       </div>
     </div>
 
-    <!--Find School Form Below-->
+    <!--Add Classes Forms Below-->
     <div class="container h-100">
-      <h3 class="text-center">Find A School</h3>
       <div class="row h-100 justify-content-center align-items-center">
+
         <form role="form">
+          <label for="StudentLastName">Last Name</label>
           <div class="form-group form-inline">
-            <input type="FindSchoolName" class="form-control" id="FindSchoolName" placeholder="Enter A School Name">
-            <button type="submit" class="btn btn-secondary">Search Schools</button>
+            <input type="StudentLastName" class="form-control" id="StudentLastNameInput" placeholder="Enter Last Name">
           </div>
+
+          <label for="StudentFirstName">First Name</label>
+          <div class="form-group form-inline">
+            <input type="StudentFirstName" class="form-control" id="StudentFirstNameInput" placeholder="Enter First Name">
+          </div>
+
+          <label for="GradeYear">Grade Year</label>
+          <div class="form-group form-inline">
+            <input type="GradeYear" class="form-control" id="GradeYearInput" placeholder="Enter Grade Year">
+          </div>
+          
+          <button type="submit" class="btn btn-secondary">Add Student</button>
         </form>
+        
       </div>
     </div>
   
-    <!--Horizontal Divider-->
-    <div class="row">
-        <div class="col"><hr></div>
-    </div>
 
-    <!--Example Table-->
-    <table class="table table-dark">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">School Name</th>
-          <th scope="col">School Address</th>
-          <th scope="col">City</th>
-          <th scope="col">Zipcode</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Forrest High School</td>
-          <td>123 Green St.</td>
-          <td>Forrest</td>
-          <td>96789</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Washington Elementary School</td>
-          <td>59 Stone Brooke Way</td>
-          <td>Grove</td>
-          <td>96788</td>
-        </tr>
-      </tbody>
-    </table>
 
 	<!--Footer-->
 	<footer>
