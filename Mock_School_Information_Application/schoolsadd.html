@@ -22,52 +22,37 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<!--Set Navbar Buttons to Far Right when Website spans full-width of screen-->
-					<!--List of Links to Webpages-->
-					<ul class="navbar-nav ml-auto">
-						
-						<!--Bolded/Currently active link below. Add/Remove "active" class based on which page is currently being viewed by the user-->
+          			<!--List of Links to Webpages-->
+					<ul class="navbar-nav ml-auto">	
+						<!--Add/Remove "active" class based on which page is currently being viewed by the user-->
 						<li class="nav-item">
-							<a class="nav-link active" href="">Home</a>
+							<a class="nav-link" href="index.html">Home</a>
 						</li>
-						
-						<!--Non-Active/Bolded Links to Webpages below, adjust as needed depending on what page is being viewed-->
+            
+            			<!--School Link ACTIVE-->
+            			<li class="nav-item">
+              				<a class="nav-link active" href="schools.html">Schools</a>
+            			</li>
 
-						<!--Classes Dropdown Option-->
-					<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
-					<div class="dropdown-menu" aria-labelledby="dropdown01">
-							<a class="dropdown-item" href="classes.html">View Classes</a>
-							<a class="dropdown-item" href="classesadd.html">Add Class</a>
-					</div>
-					</li>
+            			<!--Students Link-->
+            			<li class="nav-item">
+             				<a class="nav-link" href="students.html">Students</a>
+            			</li>
 
-							<!--Students Dropdown Option-->
-						<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
-						<div class="dropdown-menu" aria-labelledby="dropdown02">
-							<a class="dropdown-item" href="students.html">View Students</a>
-							<a class="dropdown-item" href="studentsadd.html">Add Students</a>
-						</div>
-						</li>
+            			<!--Staff Link-->
+            			<li class="nav-item">
+              				<a class="nav-link" href="staff.html">Staff</a>
+            			</li>
 
-							<!--Staff Dropdown Option-->
-						<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Staff</a>
-						<div class="dropdown-menu" aria-labelledby="dropdown03">
-							<a class="dropdown-item" href="staff.html">View Staff</a>
-							<a class="dropdown-item" href="staffadd.html">Add Staff</a>
-						</div>
-						</li>
-
-							<!--Schools Dropdown Option-->
-						<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Schools</a>
-						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="schools.html">View Schools</a>
-							<a class="dropdown-item" href="schoolsadd.html">Add Schools</a>
-						</div>
-						</li>
-						</ul>
+            			<!--Classes Link-->
+            			<li class="nav-item">
+              				<a class="nav-link" href="classes.html">Classes</a>
+            			</li>
+          				<!--Staff_Class Link-->
+            			<li class="nav-item">
+              				<a class="nav-link" href="classstaff.html">Assign Class/Staff</a>
+            			</li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -75,7 +60,21 @@
 		<!--Top Informational Jumbotron-->
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-3 text-center">Add a School</h1>
+        <h1 class="display-3 text-center">Schools</h1>
+        <div class="row h-100 justify-content-center align-items-center">
+			<nav aria-label="...">
+				<ul class="pagination">
+					<li class="page-item disabled">
+					<li class="page-item" aria-current="page">
+					    <a class="page-link" href="schools.html">View<span class="sr-only"></span></a>
+					</li>
+
+					<li class="page-item active" aria-current="page">
+					     <a class="page-link" href="schoolsadd.html">Add<span class="sr-only">(current)</span></a>
+					</li>
+				</ul>
+			</nav>
+		</div>
       </div>
     </div>
 
@@ -103,8 +102,9 @@
           <div class="form-group form-inline">
             <input type="Zipcode" class="form-control" id="ZipcodeInput" placeholder="Enter Zipcode">
           </div>
-          
-          <button type="submit" class="btn btn-secondary">Add School</button>
+          <div class="row h-100 justify-content-center align-items-center">
+          		<button type="submit" class="btn btn-secondary">Add School</button>
+          </div>
         </form>
         
       </div>
