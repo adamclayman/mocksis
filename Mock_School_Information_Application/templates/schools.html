@@ -8,14 +8,14 @@
 		<!-- Bootstrap default CSS-->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<!-- Jackckson School District Application specific CSS Stylesheet-->
-		<link href="style.css" rel="stylesheet">
+		<link href="/static/stylesheets/style.css" rel="stylesheet">
 	</head>
 	<body>
 		<!--Top Navigation Responsive Full-Width/Sticky to Top-->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
 			<div class="container-fluid">
 				<!--Top Left Nav School Logo-->
-				<a class="navbar-brand" href="index.html"><img src="img/JacksonLogo.png"></a>
+				<a class="navbar-brand" href="http://flip3.engr.oregonstate.edu:8368/"><img src="/static/images/JacksonLogo.png"></a>
 				<!--Collapsable Navbar Menu Button/Toggler when screenwidth is small-->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 					<span class="navbar-toggler-icon"></span>
@@ -26,31 +26,31 @@
 					<ul class="navbar-nav ml-auto">	
 						<!--Add/Remove "active" class based on which page is currently being viewed by the user-->
 						<li class="nav-item">
-							<a class="nav-link" href="index.html">Home</a>
+							<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/">Home</a>
 						</li>
             
             			<!--School Link ACTIVE-->
             			<li class="nav-item">
-              				<a class="nav-link active" href="schools.html">Schools</a>
+              				<a class="nav-link active" href="http://flip3.engr.oregonstate.edu:8368/schools">Schools</a>
             			</li>
 
             			<!--Students Link-->
             			<li class="nav-item">
-             				<a class="nav-link" href="students.html">Students</a>
+             				<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/students">Students</a>
             			</li>
 
             			<!--Staff Link-->
             			<li class="nav-item">
-              				<a class="nav-link" href="staff.html">Staff</a>
+              				<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/staff">Staff</a>
             			</li>
 
             			<!--Classes Link-->
             			<li class="nav-item">
-              				<a class="nav-link" href="classes.html">Classes</a>
+              				<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/classes">Classes</a>
             			</li>
           				<!--Staff_Class Link-->
             			<li class="nav-item">
-              				<a class="nav-link" href="classstaff.html">Assign Class/Staff</a>
+              				<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/classstaff">Assign Class/Staff</a>
             			</li>
 					</ul>
 				</div>
@@ -66,11 +66,11 @@
 				<ul class="pagination">
 					<li class="page-item disabled">
 					<li class="page-item active" aria-current="page">
-					    <a class="page-link" href="schools.html">View<span class="sr-only">(current)</span></a>
+					    <a class="page-link" href="http://flip3.engr.oregonstate.edu:8368/schools">View<span class="sr-only">(current)</span></a>
 					</li>
 
 					<li class="page-item" aria-current="page">
-					     <a class="page-link" href="schoolsadd.html">Add<span class="sr-only"></span></a>
+					     <a class="page-link" href="http://flip3.engr.oregonstate.edu:8368/schoolsadd">Add<span class="sr-only"></span></a>
 					</li>
 				</ul>
 			</nav>
@@ -82,9 +82,9 @@
     <div class="container h-100">
       <h3 class="text-center">Find A School</h3>
       <div class="row h-100 justify-content-center align-items-center">
-        <form role="form">
+        <form role="form" method="POST">
           <div class="form-group form-inline">
-            <input type="FindSchoolName" class="form-control" id="FindSchoolName" placeholder="Enter A School Name">
+            <input type="FindSchoolName" class="form-control" id="FindSchoolName" placeholder="Enter A School Name" name='FindSchoolName'>
             <button type="submit" class="btn btn-secondary">Search Schools</button>
           </div>
         </form>
@@ -100,7 +100,6 @@
     <table class="table table-dark">
       <thead>
         <tr>
-          <th scope="col">ID</th>
           <th scope="col">School Name</th>
           <th scope="col">School Address</th>
           <th scope="col">City</th>
@@ -108,20 +107,14 @@
         </tr>
       </thead>
       <tbody>
+        {% for r in SELECT_School_Rows %}
         <tr>
-          <th scope="row">1</th>
-          <td>Forrest High School</td>
-          <td>123 Green St.</td>
-          <td>Forrest</td>
-          <td>96789</td>
+          <th scope="row">{{r[0]}}</th>
+          <td>{{r[1]}}</td>
+          <td>{{r[2]}}</td>
+          <td>{{r[3]}}</td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Washington Elementary School</td>
-          <td>59 Stone Brooke Way</td>
-          <td>Grove</td>
-          <td>96788</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
 
