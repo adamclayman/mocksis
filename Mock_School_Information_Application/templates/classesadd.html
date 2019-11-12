@@ -8,14 +8,14 @@
 		<!-- Bootstrap default CSS-->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<!-- Jackckson School District Application specific CSS Stylesheet-->
-		<link href="style.css" rel="stylesheet">
+		<link href="/static/stylesheets/style.css" rel="stylesheet">
 	</head>
 	<body>
 		<!--Top Navigation Responsive Full-Width/Sticky to Top-->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
 			<div class="container-fluid">
 				<!--Top Left Nav School Logo-->
-				<a class="navbar-brand" href="index.html"><img src="img/JacksonLogo.png"></a>
+				<a class="navbar-brand" href="http://flip3.engr.oregonstate.edu:8368/"><img src="/static/images/JacksonLogo.png"></a>
 				<!--Collapsable Navbar Menu Button/Toggler when screenwidth is small-->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 					<span class="navbar-toggler-icon"></span>
@@ -26,32 +26,32 @@
 					<ul class="navbar-nav ml-auto">	
 						<!--Add/Remove "active" class based on which page is currently being viewed by the user-->
 						<li class="nav-item">
-							<a class="nav-link" href="index.html">Home</a>
+							<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/">Home</a>
 						</li>
             
             			<!--School Link-->
             			<li class="nav-item">
-              				<a class="nav-link" href="schools.html">Schools</a>
+              				<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/schools">Schools</a>
             			</li>
 
             			<!--Students Link-->
             			<li class="nav-item">
-             				<a class="nav-link" href="students.html">Students</a>
+             				<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/students">Students</a>
             			</li>
 
             			<!--Staff Link ACTIVE-->
             			<li class="nav-item">
-              				<a class="nav-link" href="staff.html">Staff</a>
+              				<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/staff">Staff</a>
             			</li>
 
             			<!--Classes Link-->
             			<li class="nav-item">
-              				<a class="nav-link active" href="classes.html">Classes</a>
+              				<a class="nav-link active" href="http://flip3.engr.oregonstate.edu:8368/classes">Classes</a>
             			</li>
 
           				<!--Staff_Class Link-->
             			<li class="nav-item">
-              				<a class="nav-link" href="classstaff.html">Assign Class/Staff</a>
+              				<a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/classstaff">Assign Class/Staff</a>
             			</li>
 					</ul>
 				</div>
@@ -67,11 +67,11 @@
 						<ul class="pagination">
 							<li class="page-item disabled">
 							<li class="page-item" aria-current="page">
-					    		<a class="page-link" href="classes.html">View<span class="sr-only"></span></a>
+					    		<a class="page-link" href="http://flip3.engr.oregonstate.edu:8368/classes">View<span class="sr-only"></span></a>
 							</li>
 
 							<li class="page-item active" aria-current="page">
-					     		<a class="page-link" href="classesadd.html">Add<span class="sr-only">(current)</span></a>
+					     		<a class="page-link" href="http://flip3.engr.oregonstate.edu:8368/classesadd">Add<span class="sr-only">(current)</span></a>
 							</li>
 						</ul>
 					</nav>
@@ -83,26 +83,25 @@
     <div class="container h-100">
       <div class="row h-100 justify-content-center align-items-center">
 
-        <form role="form">
+        <form role="form" action= "http://flip3.engr.oregonstate.edu:8368/classesadd" method="POST">
           <label for="ClassName">Class Name</label>
           <div class="form-group form-inline">
-            <input type="ClassName" class="form-control" id="ClassNameInput" placeholder="Enter Class Name">
+            <input type="ClassName" class="form-control" id="ClassNameInput" placeholder="Enter Class Name" name="AddClassNameInput">
           </div>
 
           <label for="ClassTerm">Class Term</label>
           <div class="form-group form-inline">
-            <input type="ClassTerm" class="form-control" id="ClassTermInput" placeholder="Enter Class Term">
+            <input type="ClassTerm" class="form-control" id="ClassTermInput" placeholder="Enter Class Term" name="AddClassTermInput">
           </div>
 
-          <label for="ClassYear">Class Year</label>
-          <div class="form-group form-inline">
-            <input type="ClassYear" class="form-control" id="ClassYear" placeholder="Enter Class Year">
-          </div>
-
-          <label for="ClassYear">School Code</label>
-          <div class="form-group form-inline">
-            <input type="SchoolID" class="form-control" id="SchoolID" placeholder="Enter School Code">
-          </div>
+          <div class="form-group">
+		    <label for="exampleFormControlSelect1">Select School</label>
+		    <select class="form-control" id="exampleFormControlSelect1" name="AddClassSchoolIDInput">
+		      {% for s in Schools %}
+		      <option value="{{s[0]}}">{{s[1]}}</option>
+		      {% endfor %}
+		    </select>
+		   </div>
           
         <div class="row h-100 justify-content-center align-items-center">
           <button type="submit" class="btn btn-secondary">Add Class</button>
