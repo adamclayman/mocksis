@@ -3,7 +3,6 @@ from flask import request
 from db_connector.db_connector import connect_to_database, execute_query
 
 app = Flask(__name__, static_url_path='/static')
-#app.config['SECRET_KEY'] = ''
 
 @app.route('/')
 def index():
@@ -16,7 +15,7 @@ def schools():
 
 	if request.method == 'GET':
 		
-		query = "SELECT * FROM School;"
+		query = "SELECT School_Name, Street_Address, City, Zip_Code FROM School;"
 
 		result = execute_query(db_connection, query).fetchall();
 		
@@ -28,10 +27,9 @@ def schools():
 
 		pattern = "%" + Search_String + "%"
 
-		result = execute_query(db_connection, "SELECT * FROM School WHERE School_Name LIKE %s;", (pattern,)).fetchall();
+		result = execute_query(db_connection, "SELECT School_Name, Street_Address, City, Zip_Code FROM School WHERE School_Name LIKE %s;", (pattern,)).fetchall();
 
 		return render_template('schools.html', SELECT_School_Rows = result)
-
 
 @app.route('/schoolsadd', methods=['POST', 'GET'])
 def schoolsadd():
@@ -58,20 +56,18 @@ def schoolsadd():
 
 		execute_query(db_connection, query, data)
 
-		return('School Added!')
-
+		return render_template('schoolsadd.html')
 
 @app.route('/students', methods=['GET'])
 def students():
 
 	db_connection = connect_to_database()
 
-	query = "SELECT Student_ID, Last_Name, First_Name, Grade_Year, School_Name FROM Student LEFT JOIN School ON Student.School_ID = School.School_ID ;"
+	query = "SELECT Student_ID, Last_Name, First_Name, Grade_Year, School_Name FROM Student LEFT JOIN School ON Student.School_ID = School.School_ID;"
 
 	result = execute_query(db_connection, query).fetchall();
 		
 	return render_template('students.html', SELECT_Student_Rows = result)
-
 
 @app.route('/studentnull/<int:Student_ID>')
 def studentnull(Student_ID):
@@ -83,19 +79,26 @@ def studentnull(Student_ID):
 
 	result = execute_query(db_connection, query, data)
 
-	return(str(result.rowcount) + "student School ID set to NULL")
+	query = "SELECT Student_ID, Last_Name, First_Name, Grade_Year, School_Name FROM Student LEFT JOIN School ON Student.School_ID = School.School_ID ;"
 
+	result = execute_query(db_connection, query).fetchall();
+		
+	return render_template('students.html', SELECT_Student_Rows = result)
 
 @app.route('/studentsadd', methods=['POST', 'GET'])
 def studentsadd():
 
+	db_connection = connect_to_database()
+
 	if request.method == 'GET':
 
-		return render_template('studentsadd.html')
+		query = "SELECT School_ID, School_Name FROM School"
+
+		result = execute_query(db_connection, query).fetchall();
+
+		return render_template('studentsadd.html', Schools = result)
 
 	elif request.method == 'POST':
-
-		db_connection = connect_to_database()
 
 		Student_LastName = request.form['StudentLastNameInput']
 
@@ -111,15 +114,18 @@ def studentsadd():
 
 		execute_query(db_connection, query, data)
 
-		return('Student Added!')
+		query = "SELECT School_ID, School_Name FROM School"
 
+		result = execute_query(db_connection, query).fetchall();
+
+		return render_template('studentsadd.html', Schools = result)
 
 @app.route('/staff', methods=['GET'])
 def staff():
 
 	db_connection = connect_to_database()
 
-	query = "SELECT Staff_ID, Last_Name, First_Name, Role_Name, Certification_1, Certification_2 FROM Teaching_Staff;"
+	query = "SELECT Last_Name, First_Name, Role_Name, Certification_1, Certification_2, School_Name FROM Teaching_Staff JOIN School ON Teaching_Staff.School_ID = School.School_ID ;"
 
 	result = execute_query(db_connection, query).fetchall();
 		
@@ -129,14 +135,18 @@ def staff():
 @app.route('/staffadd', methods=['POST', 'GET'])
 def staffadd():
 
+	db_connection = connect_to_database()
+
 	if request.method == 'GET':
 
-		return render_template('staffadd.html')
+		query ="SELECT School_ID, School_Name FROM School"
+
+		result = execute_query(db_connection, query).fetchall();
+
+		return render_template('staffadd.html', Schools = result)
 
 	elif request.method == 'POST':
-
-		db_connection = connect_to_database()
-
+		
 		Staff_LastName = request.form['StaffLastNameInput']
 
 		Staff_FirstName = request.form['StaffFirstNameInput']
@@ -153,12 +163,13 @@ def staffadd():
 
 		data = (Staff_LastName, Staff_FirstName, Staff_Role, Staff_SchoolID, Staff_Certification_1, Staff_Certification_2)
 
-		print(data)
-
 		execute_query(db_connection, query, data)
 
-		return('Staff Added!')
+		query ="SELECT School_ID, School_Name FROM School"
 
+		result = execute_query(db_connection, query).fetchall();
+
+		return render_template('staffadd.html', Schools = result)
 
 @app.route('/classes', methods=['GET'])
 def classes():
@@ -191,19 +202,24 @@ def classesedit(Class_ID):
 
 		execute_query(db_connection, query, data)
 
-		return('Class Updated!')
+		return render_template('classesedit.html')
 
 
 @app.route('/classesadd', methods=['POST', 'GET'])
 def classesadd():
 
+	db_connection = connect_to_database()
+
+
 	if request.method == 'GET':
 
-		return render_template('classesadd.html')
+		query ="SELECT School_ID, School_Name FROM School"
+
+		result = execute_query(db_connection, query).fetchall();
+
+		return render_template('classesadd.html', Schools = result)
 
 	elif request.method == 'POST':
-
-		db_connection = connect_to_database()
 
 		Class_Name = request.form['AddClassNameInput']
 
@@ -217,7 +233,11 @@ def classesadd():
 
 		execute_query(db_connection, query, data)
 
-		return('Class Added!')
+		query = "SELECT School_ID, School_Name FROM School"
+
+		result = execute_query(db_connection, query).fetchall();
+
+		return render_template('classesadd.html', Schools = result)
 
 
 @app.route('/classstaff', methods=['GET'])
@@ -225,7 +245,7 @@ def classstaff():
 
 	db_connection = connect_to_database()
 
-	query = "SELECT b.Staff_Class_ID, a.Class_Name, c.Last_Name, c.First_Name, c.Role_Name FROM Class a JOIN Staff_Class b ON a.Class_ID = b.Class_ID JOIN Teaching_Staff c ON b.Staff_ID = c.Staff_ID;"
+	query = "SELECT d.Staff_ID, b.School_Name, a.Class_Name, d.Last_Name, d.First_Name, d.Role_Name FROM Class a JOIN School b ON b.School_ID = a.School_ID JOIN Staff_Class c ON a.Class_ID = c.Class_ID JOIN Teaching_Staff d ON c.Staff_ID = d.Staff_ID;"
 
 	result = execute_query(db_connection, query).fetchall();
 		
@@ -243,7 +263,11 @@ def staffclassdelete(StaffClass_ID):
 
 	result = execute_query(db_connection, query, data)
 
-	return(str(result.rowcount) + "Staff Class Match Deleted")
+	query = "SELECT b.Staff_Class_ID, a.Class_Name, c.Last_Name, c.First_Name, c.Role_Name FROM Class a JOIN Staff_Class b ON a.Class_ID = b.Class_ID JOIN Teaching_Staff c ON b.Staff_ID = c.Staff_ID;"
+
+	result = execute_query(db_connection, query).fetchall();
+		
+	return render_template('classstaff.html', SELECT_Class_Staff_Rows = result)
 
 
 @app.route('/classstaffadd', methods=['POST', 'GET'])
@@ -267,4 +291,4 @@ def classstaffadd():
 
 		execute_query(db_connection, query, data)
 
-		return('Staff Class Match Added!')
+		return render_template('classstaffadd.html')
