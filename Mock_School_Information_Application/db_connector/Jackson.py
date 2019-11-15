@@ -125,7 +125,7 @@ def staff():
 
 	db_connection = connect_to_database()
 
-	query = "SELECT Last_Name, First_Name, Role_Name, Certification_1, Certification_2, School_Name FROM Teaching_Staff JOIN School ON Teaching_Staff.School_ID = School.School_ID ;"
+	query = "SELECT Last_Name, First_Name, Role_Name, Certification_1, Certification_2, School_Name FROM Teaching_Staff JOIN School ON Teaching_Staff.School_ID = School.School_ID;"
 
 	result = execute_query(db_connection, query).fetchall();
 		
