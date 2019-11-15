@@ -56,7 +56,7 @@ def schoolsadd():
 
 		execute_query(db_connection, query, data)
 
-		return render_template('schoolsadd.html')
+		return render_template('schools.html')
 
 @app.route('/students', methods=['GET'])
 def students():
@@ -79,7 +79,7 @@ def studentnull(Student_ID):
 
 	result = execute_query(db_connection, query, data)
 
-	query = "SELECT Student_ID, Last_Name, First_Name, Grade_Year, School_Name FROM Student LEFT JOIN School ON Student.School_ID = School.School_ID ;"
+	query = "SELECT Student_ID, Last_Name, First_Name, Grade_Year, School_Name FROM Student LEFT JOIN School ON Student.School_ID = School.School_ID;"
 
 	result = execute_query(db_connection, query).fetchall();
 		
@@ -114,11 +114,11 @@ def studentsadd():
 
 		execute_query(db_connection, query, data)
 
-		query = "SELECT School_ID, School_Name FROM School"
+		query = "SELECT Student_ID, Last_Name, First_Name, Grade_Year, School_Name FROM Student LEFT JOIN School ON Student.School_ID = School.School_ID;"
 
 		result = execute_query(db_connection, query).fetchall();
-
-		return render_template('studentsadd.html', Schools = result)
+			
+		return render_template('students.html', SELECT_Student_Rows = result)
 
 @app.route('/staff', methods=['GET'])
 def staff():
@@ -165,11 +165,11 @@ def staffadd():
 
 		execute_query(db_connection, query, data)
 
-		query ="SELECT School_ID, School_Name FROM School"
+		query = "SELECT Last_Name, First_Name, Role_Name, Certification_1, Certification_2, School_Name FROM Teaching_Staff JOIN School ON Teaching_Staff.School_ID = School.School_ID ;"
 
 		result = execute_query(db_connection, query).fetchall();
-
-		return render_template('staffadd.html', Schools = result)
+			
+		return render_template('staff.html', SELECT_Staff_Rows = result)
 
 @app.route('/classes', methods=['GET'])
 def classes():
@@ -202,7 +202,11 @@ def classesedit(Class_ID):
 
 		execute_query(db_connection, query, data)
 
-		return render_template('classesedit.html')
+		query = "SELECT Class_ID, Class_Name, Class_Term, School_Name FROM Class JOIN School ON Class.School_ID = School.School_ID;"
+
+		result = execute_query(db_connection, query).fetchall();
+			
+		return render_template('classes.html', SELECT_Class_Rows = result)
 
 
 @app.route('/classesadd', methods=['POST', 'GET'])
@@ -233,11 +237,11 @@ def classesadd():
 
 		execute_query(db_connection, query, data)
 
-		query = "SELECT School_ID, School_Name FROM School"
+		query = "SELECT Class_ID, Class_Name, Class_Term, School_Name FROM Class JOIN School ON Class.School_ID = School.School_ID;"
 
 		result = execute_query(db_connection, query).fetchall();
-
-		return render_template('classesadd.html', Schools = result)
+			
+		return render_template('classes.html', SELECT_Class_Rows = result)
 
 
 @app.route('/classstaff', methods=['GET'])
