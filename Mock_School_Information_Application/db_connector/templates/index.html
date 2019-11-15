@@ -1,67 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-		<meta charset="utf-8">
-		<!--Responive to viewport for varying device width-->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Jackson School District Information Application</title>
-		<!-- Bootstrap default CSS-->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<!-- Jackckson School District Application specific CSS Stylesheet-->
-		<link href="/static/stylesheets/style.css" rel="stylesheet">
-	</head>
+{% extends 'base.html' %}
 
-	<body>
-		<!--Top Navigation Responsive Full-Width/Sticky to Top-->
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-			<div class="container-fluid">
-				<!--Top Left Nav School Logo-->
-				<a class="navbar-brand" href="http://flip3.engr.oregonstate.edu:8368/"><img src="/static/images/JacksonLogo.png"></a>
-				<!--Collapsable Navbar Menu Button/Toggler when screenwidth is small-->
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<!--Set Navbar Buttons to Far Right when Website spans full-width of screen-->
-					
-          <!--List of Links to Webpages-->
-					<ul class="navbar-nav ml-auto">
-						
-						<!--Add/Remove "active" class based on which page is currently being viewed by the user-->
-						<li class="nav-item">
-							<a class="nav-link active" href="http://flip3.engr.oregonstate.edu:8368/">Home</a>
-						</li>
-
-            <!--School Link-->
-            <li class="nav-item">
-              <a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/schools">Schools</a>
-            </li>
-
-            <!--Students Link-->
-            <li class="nav-item">
-              <a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/students">Students</a>
-            </li>
-
-            <!--Staff Link-->
-            <li class="nav-item">
-              <a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/staff">Staff</a>
-            </li>
-
-            <!--Classes Link-->
-            <li class="nav-item">
-              <a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/classes">Classes</a>
-            </li>
-
-          	<!--Staff_Class Link-->
-            <li class="nav-item">
-              <a class="nav-link" href="http://flip3.engr.oregonstate.edu:8368/classstaff">Assign Class/Staff</a>
-            </li>
-
-					 </ul>
-				</div>
-			</div>
-		</nav>
-
+{% block content %}
 		<!--Top Informational Jumbotron-->
     <div class="jumbotron">
       <div class="container">
@@ -70,30 +9,4 @@
       </div>
     </div>
 
-      <!--Place Page Content Below-->
-
-
-      <!--Footer-->
-    <footer>
-      <div class = "container-fluid padding">
-      	<div class="row text-center">
-      		<div class = "col-md-12">
-      			<h5>Contact Us</h5>
-      			<hr class="dark">
-      			<p>
-					(123) 456-789<br>
-					JacksonSchoolDistrict@jackson.edu<br>
-					123 Street Ave.<br>
-					City, State 00000
-				</p>
-      		</div>
-      	</div>
-      </div>
-    </footer>
-
-		<!-- Bootstrap required JavaScript plugins-->
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">	</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	</body>
-</html>
+{% endblock %}
