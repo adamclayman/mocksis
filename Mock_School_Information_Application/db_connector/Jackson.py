@@ -279,15 +279,24 @@ def classstaffadd():
 
 	if request.method == 'GET':
 
-		return render_template('classstaffadd.html')
+		query ="SELECT Staff_ID, First_Name, Last_Name FROM Teaching_Staff"
+
+		result = execute_query(db_connection, query).fetchall();
+
+		query ="SELECT Class_ID, Class_Name FROM Class"
+
+		result2 = execute_query(db_connection, query).fetchall();
+
+		return render_template('classstaffadd.html', Staff = result, Classes = result2)
+
 
 	elif request.method == 'POST':
 
 		db_connection = connect_to_database()
 
-		Class_ID = request.form['AddClassStaffClassIDInput']
+		Class_ID = request.form['ClassIDInput']
 
-		Staff_ID = request.form['AddClassStaffStaffIDInput']
+		Staff_ID = request.form['StaffIDInput']
 
 		query = "INSERT INTO Staff_Class(Class_ID, Staff_ID) VALUES (%s, %s);"
 
@@ -295,4 +304,8 @@ def classstaffadd():
 
 		execute_query(db_connection, query, data)
 
-		return render_template('classstaffadd.html')
+		query = "SELECT d.Staff_ID, b.School_Name, a.Class_Name, d.Last_Name, d.First_Name, d.Role_Name FROM Class a JOIN School b ON b.School_ID = a.School_ID JOIN Staff_Class c ON a.Class_ID = c.Class_ID JOIN Teaching_Staff d ON c.Staff_ID = d.Staff_ID;"
+
+		result = execute_query(db_connection, query).fetchall();
+			
+		return render_template('classstaff.html', SELECT_Class_Staff_Rows = result)

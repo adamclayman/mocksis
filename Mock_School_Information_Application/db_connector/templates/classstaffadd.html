@@ -33,15 +33,24 @@
       <div class="row h-100 justify-content-center align-items-center">
 
         <form role="form" action= "/classstaffadd" method="POST">
-          <label for="ClassName">Enter ID of Class</label>
-          <div class="form-group form-inline">
-            <input type="ClassID" class="form-control" id="ClassIDInput" placeholder="1" name="AddClassStaffClassIDInput">
-          </div>
 
-          <label for="ClassTerm">Enter ID of Staff assigned to above Class</label>
-          <div class="form-group form-inline">
-            <input type="StaffID" class="form-control" id="StaffIDInput" placeholder="2" name="AddClassStaffStaffIDInput">
-          </div>
+		  <div class="form-group">
+		    <label for="exampleFormControlSelect1">Select Class</label>
+		    <select class="form-control" id="exampleFormControlSelect1" name="ClassIDInput">
+		      {% for c in Classes %}
+		      <option value="{{c[0]}}">{{c[1]}}</option>
+		      {% endfor %}
+		    </select>
+		   </div>
+
+		  <div class="form-group">
+		    <label for="exampleFormControlSelect1">Select Staff Member</label>
+		    <select class="form-control" id="exampleFormControlSelect1" name="StaffIDInput">
+		      {% for s in Staff %}
+		      <option value="{{s[0]}}">{{s[1] + " " + s[2]}}</option>
+		      {% endfor %}
+		    </select>
+		   </div>
 
         <div class="row h-100 justify-content-center align-items-center">
           <button type="submit" class="btn btn-secondary">Add New Assignment</button>
