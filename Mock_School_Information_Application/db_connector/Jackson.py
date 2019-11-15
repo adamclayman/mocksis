@@ -276,6 +276,7 @@ def staffclassdelete(StaffClass_ID):
 
 @app.route('/classstaffadd', methods=['POST', 'GET'])
 def classstaffadd():
+	db_connection = connect_to_database()
 
 	if request.method == 'GET':
 
@@ -292,11 +293,9 @@ def classstaffadd():
 
 	elif request.method == 'POST':
 
-		db_connection = connect_to_database()
+		Class_ID = request.form['ClassIDInput']
 
-		Class_ID = request.form['UniqueClassIDInput']
-
-		Staff_ID = request.form['UniqueStaffIDInput']
+		Staff_ID = request.form['StaffIDInput']
 
 		query = "INSERT INTO Staff_Class(Class_ID, Staff_ID) VALUES (%s, %s);"
 
