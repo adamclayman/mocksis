@@ -279,11 +279,11 @@ def classstaffadd():
 
 	if request.method == 'GET':
 
-		query ="SELECT Staff_ID, First_Name, Last_Name FROM Teaching_Staff"
+		query ="SELECT Staff_ID, First_Name, Last_Name FROM Teaching_Staff;"
 
 		result = execute_query(db_connection, query).fetchall();
 
-		query ="SELECT Class_ID, Class_Name FROM Class"
+		query ="SELECT Class_ID, Class_Name FROM Class;"
 
 		result2 = execute_query(db_connection, query).fetchall();
 
@@ -294,9 +294,9 @@ def classstaffadd():
 
 		db_connection = connect_to_database()
 
-		Class_ID = request.form['ClassIDInput']
+		Class_ID = request.form['UniqueClassIDInput']
 
-		Staff_ID = request.form['StaffIDInput']
+		Staff_ID = request.form['UniqueStaffIDInput']
 
 		query = "INSERT INTO Staff_Class(Class_ID, Staff_ID) VALUES (%s, %s);"
 
