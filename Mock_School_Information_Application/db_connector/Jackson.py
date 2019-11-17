@@ -56,7 +56,12 @@ def schoolsadd():
 
 		execute_query(db_connection, query, data)
 
-		return render_template('schools.html')
+		query = "SELECT School_Name, Street_Address, City, Zip_Code FROM School;"
+
+		result = execute_query(db_connection, query).fetchall();
+		
+		return render_template('schools.html', SELECT_School_Rows = result)
+
 
 @app.route('/students', methods=['GET'])
 def students():
