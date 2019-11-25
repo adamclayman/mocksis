@@ -69,7 +69,8 @@ CREATE TABLE Staff_Class (
   Staff_ID INT,
   PRIMARY KEY (Staff_Class_ID),
   FOREIGN KEY (Class_ID) REFERENCES Class (Class_ID) ON DELETE CASCADE,
-  FOREIGN KEY (Staff_ID) REFERENCES Teaching_Staff (Staff_ID) ON DELETE CASCADE
+  FOREIGN KEY (Staff_ID) REFERENCES Teaching_Staff (Staff_ID) ON DELETE CASCADE,
+  CONSTRAINT teacher_assignment UNIQUE (Staff_ID, Class_ID)
 ) ENGINE=InnoDB AUTO_INCREMENT = 1 DEFAULT  CHARSET=latin1;
 
 
