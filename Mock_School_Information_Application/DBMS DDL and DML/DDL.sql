@@ -13,7 +13,7 @@ CREATE TABLE School (
 
 INSERT INTO School VALUES (1,'Spruce High School', '1 Avenue Way','Rolling Hills','96789'),
 (2,'Forrest High School', '2 Parkway Avenue','Forrest','96822'), 
-(3,'Washington Elementary School', '3 Vista Loop','Grove','96788');
+(3,'Washington Elementary School', '3 Vista Loop','Grove','96788'), (4, 'Zoolander School for Ants', '4 Hill Way', 'Rolling Hills', '96789');
 
 DROP TABLE IF EXISTS Student;
 
@@ -39,7 +39,7 @@ CREATE TABLE Teaching_Staff (
   Last_Name VARCHAR(40) NOT NULL,
   Certification_1 VARCHAR(50) DEFAULT NULL,
   Certification_2 VARCHAR(50) DEFAULT NULL,
-  School_ID INT NOT NULL,
+  School_ID INT,
   PRIMARY KEY (Staff_ID),
   FOREIGN KEY (School_ID) REFERENCES School (School_ID) ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
