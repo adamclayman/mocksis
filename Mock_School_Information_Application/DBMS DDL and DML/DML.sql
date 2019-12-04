@@ -1,5 +1,5 @@
 
--- Corresponds to View Schools Page l
+-- Corresponds to View Schools Page 
 SELECT School_Name, Street_Address, City, Zip_Code 
 FROM School;
 
