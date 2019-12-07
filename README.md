@@ -1,2 +1,4 @@
 # mocksis
 Mock School Information Site for CS 340 Project
+
+Flask Web-Application for a fictional school district entitled "Jackson School District." Front-Facing UI created with HTML/CSS, queries a relational/SQL database to retrieve and modify information within said database. Database Definition/Manipulation Language in the form of SQL files can be found in folder "DBMS DDL and DML" to replicate the database used for this project. The Flask application handling all back-end functionalities is can be found in db_connector/Jackson.py. This application is part of the final project for Oregon State University's CS340 Introduction to Databases course. This project was originally hosted on an OSU Red Hat Linux server for the application itself, and MariaDB as the DBMS for the relational database used.
